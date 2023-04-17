@@ -4,14 +4,14 @@
 \alias{updateDateTimeRangePickerInput}
 \title{Update a datetime range picker input}
 \usage{
-updateDateTimeRangePickerInput(session, inputId, values)
+updateDateTimeRangePickerInput(session, inputId, from, to)
 }
 \arguments{
 \item{session}{the Shiny \code{session} object}
 
 \item{inputId}{the id of the datetime range picker widget to be updated}
 
-\item{values}{new values for the datetime range picker widget}
+\item{from, to}{new values for the datetime range picker widget}
 }
 \value{
 No returned value, called for side effect.

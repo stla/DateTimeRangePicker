@@ -81,12 +81,17 @@ DateTimeRangePickerInput <- function(inputId, from = NULL, to = NULL, style = NU
 #'
 #' @param session the Shiny \code{session} object
 #' @param inputId the id of the datetime range picker widget to be updated
-#' @param values new values for the datetime range picker widget
+#' @param from,to new values for the datetime range picker widget
 #'
 #' @return No returned value, called for side effect.
 #'
 #' @export
-updateDateTimeRangePickerInput <- function(session, inputId, values){
-  message <- list(value = values)
+updateDateTimeRangePickerInput <- function(session, inputId, from, to){
+  stopifnot(from < to)
+  value <- list(
+    from = datetime2list(from, sec = TRUE),
+    to   = datetime2list(to, sec = TRUE)
+  )
+  message <- list(value = value)
   session$sendInputMessage(inputId, message)
 }
