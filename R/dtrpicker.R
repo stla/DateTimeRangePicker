@@ -1,14 +1,15 @@
 #' @title Datetime range picker
-#' @description A datetime range picker for a Shiny UI.
+#' @description A datetime range picker widget for a Shiny UI.
 #'
-#' @param inputId the input slot that will be used to access the value
+#' @param inputId the input slot that will be used to access the values
 #' @param from,to initial values, either \code{POSIXct} objects, or objects
 #'   coercible to \code{POSIXct} objects;
 #'   if \code{NULL}, then \code{from} is set to the current time and \code{to}
 #'   is set to the next day at the same time
 #' @param style inline CSS for the container
 #'
-#' @return xxx
+#' @return An input element that can be included in a Shiny UI definition.
+#'   This is a \code{shiny.tag.list} object.
 #'
 #' @importFrom reactR createReactShinyInput
 #' @importFrom htmltools htmlDependency tags
@@ -26,7 +27,7 @@
 #'       width = 5,
 #'       tags$fieldset(
 #'         tags$legend("Click to change time"),
-#'         dtrpickerInput(
+#'         DateTimeRangePickerInput(
 #'           "dtrpicker",
 #'           style = paste0(
 #'             "background-color: chartreuse; ",
@@ -51,7 +52,7 @@
 #' if(interactive()){
 #'   shinyApp(ui, server)
 #' }
-dtrpickerInput <- function(inputId, from = NULL, to = NULL, style = NULL){
+DateTimeRangePickerInput <- function(inputId, from = NULL, to = NULL, style = NULL){
   from <- if(is.null(from)) Sys.time() else as.POSIXct(from)
   to   <- if(is.null(to)) Sys.time()+86400 else as.POSIXct(to)
   stopifnot(from < to)
@@ -75,12 +76,17 @@ dtrpickerInput <- function(inputId, from = NULL, to = NULL, style = NULL){
   )
 }
 
-#' <Add Title>
+#' @title Update a datetime range picker input
+#' @description Change the values of a datetime range picker input.
 #'
-#' <Add Description>
+#' @param session the Shiny \code{session} object
+#' @param inputId the id of the datetime range picker widget to be updated
+#' @param values new values for the datetime range picker widget
+#'
+#' @return No returned value, called for side effect.
 #'
 #' @export
-updateDtrpickerInput <- function(session, inputId, value){
-  message <- list(value = value)
-  session$sendInputMessage(inputId, message);
+updateDateTimeRangePickerInput <- function(session, inputId, values){
+  message <- list(value = values)
+  session$sendInputMessage(inputId, message)
 }

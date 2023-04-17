@@ -6,3 +6,5 @@
 ^package\.json$
 ^webpack\.config\.js$
 ^yarn\.lock$
+^inst/gif$
+^inst/essais$

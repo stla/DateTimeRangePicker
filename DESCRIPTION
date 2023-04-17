@@ -1,14 +1,21 @@
 Package: DateTimeRangePicker
-Title: What the Package Does (One Line, Title Case)
+Title: A Datetime Range Picker Widget for Usage in 'Shiny' Applications
 Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: c(
+    person("Stéphane", "Laurent", , "laurent_step@outlook.fr", role = c("aut", "cre")),
+    person("Wojciech", "Maj", role = "cph",
+           comment = "author of the 'React-DateTimeRange-Picker' library")
+  )
+Description: Provides a datetime range picker widget for usage in 'Shiny'.
+    It creates a calendar allowing to select a start date and an end date
+    as well as two fields allowing to select a start time and an end time.
 License: GPL-3
-Encoding: UTF-8
-RoxygenNote: 7.2.0
+URL: https://github.com/stla/DateTimeRangePicker
+BugReports: https://github.com/stla/DateTimeRangePicker/issues
 Imports: 
     htmltools,
+    lubridate,
     reactR,
-    shiny,
-    lubridate
+    shiny
+Encoding: UTF-8
+RoxygenNote: 7.2.3
