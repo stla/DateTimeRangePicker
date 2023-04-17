@@ -8,3 +8,4 @@
 ^yarn\.lock$
 ^inst/gif$
 ^inst/essais$
+^cran-comments\.md$
